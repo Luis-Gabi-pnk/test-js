@@ -13,11 +13,11 @@ btnTrocaCor.addEventListener("click", () => {
 
     //valida o nome da cor
     if( caixaTexto.className === "verde" ){
-        caixaTexto.classList.add('amarelo');
+        caixaTexto.classList.add('vermelho');
         caixaTexto.classList.remove('verde');
     }else{
         caixaTexto.classList.add('verde');
-        caixaTexto.classList.remove('amarelo');
+        caixaTexto.classList.remove('vermelho');
     }
     //exibe no console
     console.log(caixaTexto.className);
@@ -36,4 +36,34 @@ const btnSoma = document.getElementById("somar");
 btnSoma.addEventListener("click", () => {
     let numero1 = document.getElementById("numero1").Value;
     let numero2 = document.getElementById("numero2").Value;
-})
+    let soma = parseInt(numero1) + parseInt(numero2);
+    console.log(soma);
+});
+
+const btnBolinhas  = document.getElementById("addBolinhas");
+let total = 0;
+let bolinhas ="";
+let bola = '<div class="bolinha"></div>';
+ 
+btnBolinhas.addEventListener("click", () => {
+total = total + 1;
+bolinhas="";
+for (let index = 0; index < total; index++){
+bolinhas = bolinhas + bola;
+ 
+}
+document.getElementById("agrupaBolinhas").innerHTML = bolinhas;
+ 
+ 
+});
+//localiza
+const btnLocalizar = document.getElementById("localiza")
+btnLocalizar.addEventListener("click", () => {
+    function showPosition(position) {
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+
+        console.log( "Latitude: " + latitude + "longitude: " + longitude);
+    } 
+    let coordenadas = navigator.geolocation.getCurrentPosition(showPosition);
+});
